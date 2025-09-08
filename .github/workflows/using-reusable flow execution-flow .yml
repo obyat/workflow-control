@@ -72,6 +72,14 @@ jobs:
     uses: ./.github/workflows/reusable-flow.yml
     with:
       artifact-name: dist-files 
+    # secrets:
+      # DEPLOYMENT_KEY: ${{ secrets.DEPLOYMENT_KEY }}
+  print-deploy-result:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print deployment result
+        run: echo "Deployment result: ${{ needs.deploy.outputs.result }}"
   report:
     needs: [lint, deploy] # Unnecessary to write middle jobs, as GitHub infers them.
     if: failure() # Only run if any of the previous jobs failed
