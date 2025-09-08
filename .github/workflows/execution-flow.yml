@@ -84,4 +84,4 @@ jobs:
       - name: Output information
         run: |
           echo "failure... "
-          echo "${{JSON.Stringify(github)}}"
+          echo "${{toJSON(github)}}"
