@@ -79,7 +79,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print deployment result
-        run: echo "Deployment result: '${{ needs.deploy.outputs.result }}'"
+        run: echo "${{ needs.deploy.outputs.result }}"
   report:
     needs: [lint, deploy] # Unnecessary to write middle jobs, as GitHub infers them.
     if: failure() # Only run if any of the previous jobs failed
